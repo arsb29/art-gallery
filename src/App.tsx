@@ -11,25 +11,15 @@ import {Shop} from './Shop';
 
 export default function App() {
     return (
-        <div>
-            <h1>Basic Example</h1>
-            <p>
-                This example demonstrates some of the core
-                features of React Router  including nested
-                <code>&lt;Route&gt;</code>s,{" "}
-                visits an unrecognized URL.
-            </p>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Shop />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="studio" element={<Studio />} />
-                    <Route path="events" element={<Event />} />
-                    <Route path="contacts" element={<Contacts />} />
-                    <Route path="*" element={<NoMatch />} />
-                </Route>
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Shop />} />
+                <Route path="about" element={<About />} />
+                <Route path="studio" element={<Studio />} />
+                <Route path="events" element={<Event />} />
+                <Route path="contacts" element={<Contacts />} />
+                <Route path="*" element={<NoMatch />} />
+            </Route>
+        </Routes>
     );
 }
-

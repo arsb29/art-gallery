@@ -1,0 +1,47 @@
+.wrap {
+    position: fixed;
+    transition: all 0.2s;
+    left: 0;
+    top: 0;
+    @include for-size(mobile) {
+      left: 100%;
+      &.open {
+        background: white;
+        transform: translateX(-100%);
+        box-shadow: 0 0 1200px 800px rgba(0, 0, 0, 0.3);
+      }
+    }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  z-index: 100;
+  width: 24px;
+  height: 3px;
+  background: black;
+  position: relative;
+  transition: all 0.2s;
+
+  &.open {
+    transform: rotate(45deg);
+    &:after {
+      top: -6px;
+      transform: rotate(90deg);
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    margin-top: 7px;
+    width: 24px;
+    height: 3px;
+    background: black;
+  }
+}

@@ -10,7 +10,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        client: {
+            overlay: false
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -32,7 +35,7 @@ module.exports = {
                 use: ['babel-loader', 'ts-loader'],
             },
             {
-                test: /\.module.css$/,
+                test: /\.module.scss$/,
                 use: [
                     {loader: "style-loader"},
                     {
@@ -43,6 +46,13 @@ module.exports = {
                             },
                             sourceMap: true
                         }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            additionalData: "@import './src/styles/style.scss';",
+                            sourceMap: true
+                        },
                     }
                 ]
             },
