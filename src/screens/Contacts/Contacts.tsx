@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function Studio() {
+
+export default function Contacts() {
     return (
         <div>
-            <h2>About</h2>
+            <h2>Contacts</h2>
         </div>
     );
 }

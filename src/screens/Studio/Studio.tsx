@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function Shop() {
+
+export default function Studio() {
     return (
         <div>
-            <h2>Shop</h2>
+            <h2>About</h2>
         </div>
     );
 }

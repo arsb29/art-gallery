@@ -6,12 +6,9 @@ import styles from './Layout.module.scss';
 
 export default function Layout() {
     return (
-        <div>
-            <div className={styles.container}>
-                <Header />
-
-                <Outlet />
-            </div>
+        <div className={styles.container}>
+            <Header />
+            <Outlet />
         </div>
     );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {Contacts} from './Contacts';
-import {Event} from './Event';
+import {Contacts} from './screens/Contacts';
+import {Event} from './screens/Event';
+import {About} from './screens/About';
+import {Studio} from './screens/Studio';
+import {Shop} from './screens/Shop';
 import {NoMatch} from './NoMatch';
-import {About} from './About';
-import {Studio} from './Studio';
 import {Layout} from './Layout';
-import {Shop} from './Shop';
 
 
 export default function App() {

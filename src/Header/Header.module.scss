@@ -3,13 +3,36 @@
     transition: all 0.2s;
     left: 0;
     top: 0;
+    padding: 80px 0 20px 60px;
     @include for-size(mobile) {
+      padding-top: 20px;
       left: 100%;
+      width: 80%;
+      height: 100%;
       &.open {
         background: white;
         transform: translateX(-100%);
         box-shadow: 0 0 1200px 800px rgba(0, 0, 0, 0.3);
       }
+    }
+
+    ul {
+      margin-top: 40px;
+      @include for-size(mobile) {
+        margin-top: 20px;
+      }
+    }
+    li {
+      padding: 5px 0;
+      @include for-size(mobile) {
+        padding: 10px 0;
+      }
+    }
+    a {
+      color: black;
+    }
+    a.active {
+      color: #4DABF7;
     }
 }
 
@@ -17,31 +40,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include for-size(mobile) {
+    padding-bottom: 10px;
+  }
 }
 
 .icon {
   z-index: 100;
-  width: 24px;
-  height: 3px;
-  background: black;
-  position: relative;
-  transition: all 0.2s;
-
-  &.open {
-    transform: rotate(45deg);
-    &:after {
-      top: -6px;
-      transform: rotate(90deg);
-    }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    margin-top: 7px;
-    width: 24px;
-    height: 3px;
-    background: black;
-  }
 }
