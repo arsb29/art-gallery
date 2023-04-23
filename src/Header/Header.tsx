@@ -1,15 +1,14 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import useBreakpoint from 'use-breakpoint';
 import cc from 'classnames';
 import {Title, Burger, Text} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import styles from './Header.module.scss';
-import {BREAKPOINTS} from '../helpers';
+import {useBreakpoint} from '../helpers';
 
 
 export default function Header() {
-    const {breakpoint} = useBreakpoint(BREAKPOINTS);
+    const {breakpoint} = useBreakpoint();
     const isMobile = breakpoint === 'mobile';
     const [opened, {toggle, close}] = useDisclosure(false);
     const Header = () => <Title weight={400} order={2}>КАТЯ С.</Title>;

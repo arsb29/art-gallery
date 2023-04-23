@@ -7,7 +7,7 @@
 }
 
 .left {
-  width: 40vw;
+  flex: 0 0 50%;
   @include for-size(mobile) {
     width: 100%;
   }
@@ -23,6 +23,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-left: 20px;
+  align-items: flex-start;
   @include for-size(mobile) {
     margin-left: 0;
     margin-top: 20px;

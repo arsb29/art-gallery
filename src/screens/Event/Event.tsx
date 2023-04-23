@@ -2,6 +2,7 @@ import React from 'react';
 import {Title, Text, Button} from '@mantine/core';
 import {events} from './eventList';
 import styles from './Event.module.scss'
+import {useBreakpoint} from '../../helpers';
 
 
 export default function Event() {
@@ -20,8 +21,9 @@ type Event = {
 }
 
 function renderEvent(event: Event) {
+    const {breakpoint} = useBreakpoint();
+    const isMobile = breakpoint === 'mobile';
     const {title, image, description, button} = event;
-    console.log(image)
     return (
         <div className={styles.row}>
             <div className={styles.left}>
@@ -36,7 +38,11 @@ function renderEvent(event: Event) {
                         </Text>
                     ))}
                 </div>
-                <Button variant="outline" className={styles.button}>
+                <Button
+                    variant="outline"
+                    className={styles.button}
+                    fullWidth={isMobile}
+                >
                     {button}
                 </Button>
             </div>
