@@ -20,6 +20,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "max-len": [1, 80, 2, {ignoreComments: true}]
+        "max-len": [1, 80, 2, {ignoreComments: true}],
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

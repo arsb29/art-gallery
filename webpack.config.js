@@ -6,8 +6,15 @@ const path = require('path');
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        filename: 'bundle.[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[hash:8].js',
+        sourceMapFilename: '[name].[hash:8].map',
+        chunkFilename: '[id].[hash:8].js'
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
     },
     devServer: {
         historyApiFallback: true,
@@ -56,6 +63,10 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test: /\.png/,
+                type: 'asset/resource'
+            }
         ],
     },
 };

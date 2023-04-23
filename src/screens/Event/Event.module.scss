@@ -1,0 +1,41 @@
+.row {
+  display: flex;
+  max-height: 500px;
+  @include for-size(mobile) {
+    flex-direction: column;
+  }
+}
+
+.left {
+  width: 40vw;
+  @include for-size(mobile) {
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.right {
+  white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+  @include for-size(mobile) {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+.description {
+  margin-top: 20px;
+  @include for-size(mobile) {
+    margin-top: 10px;
+  }
+}
+
+.button {
+  margin-top: 20px;
+}
