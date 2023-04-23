@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         filename: 'bundle.[hash].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist')
     },
     devServer: {
         historyApiFallback: true,
@@ -25,14 +25,14 @@ module.exports = {
     ],
     resolve: {
         modules: [__dirname, 'src', 'node_modules'],
-        extensions: ['.js', '.tsx', '.ts'],
+        extensions: ['.js', '.tsx', '.ts']
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'ts-loader'],
+                use: ['babel-loader', 'ts-loader']
             },
             {
                 test: /\.module.scss$/,
@@ -52,7 +52,7 @@ module.exports = {
                         options: {
                             additionalData: "@import './src/styles/style.scss';",
                             sourceMap: true
-                        },
+                        }
                     }
                 ]
             },
