@@ -31,6 +31,8 @@ export function Item(props: Props) {
                     variant="outline"
                     className={styles.button}
                     fullWidth={isMobile}
+                    component="a"
+                    href="./form"
                 >
                     {button}
                 </Button>

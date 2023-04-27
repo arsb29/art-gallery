@@ -7,7 +7,10 @@ import App from './App';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <MantineProvider withGlobalStyles withNormalizeCSS>
+        <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+        >
             <BrowserRouter>
                 <App />
             </BrowserRouter>

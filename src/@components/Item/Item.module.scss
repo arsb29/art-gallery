@@ -1,6 +1,5 @@
 .row {
   display: flex;
-  max-height: 500px;
   @include for-size(mobile) {
     flex-direction: column;
   }

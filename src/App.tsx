@@ -7,6 +7,7 @@ import {Studio} from './screens/Studio';
 import {Shop} from './screens/Shop';
 import {NoMatch} from './NoMatch';
 import {Layout} from './Layout';
+import {Form} from './Form';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
                 <Route path="studio" element={<Studio />} />
                 <Route path="events" element={<Event />} />
                 <Route path="contacts" element={<Contacts />} />
+                <Route path="form" element={<Form />} />
                 <Route path="*" element={<NoMatch />} />
             </Route>
         </Routes>
