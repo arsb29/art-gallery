@@ -9,6 +9,7 @@
       left: 100%;
       width: 80%;
       height: 100%;
+      z-index: 1000;
       &.open {
         background: white;
         transform: translateX(-100%);
@@ -46,5 +47,5 @@
 }
 
 .icon {
-  z-index: 100;
+  z-index: 1100;
 }
