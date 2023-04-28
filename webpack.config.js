@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const path = require('path');
 
 
@@ -16,6 +17,19 @@ module.exports = {
         splitChunks: {
             chunks: 'all',
         },
+        minimizer: [
+            new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.imageminMinify,
+                    options: {
+                        plugins: [
+                            ["jpegtran", { progressive: true }],
+                            ["optipng", { optimizationLevel: 5 }],
+                        ],
+                    },
+                },
+            }),
+        ],
     },
     devServer: {
         historyApiFallback: true,
