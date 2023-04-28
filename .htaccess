@@ -1,0 +1,27 @@
+# Редирект с http на https создан автоматически при заказе бесплатного ssl-сертификата
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+# Конец редиректа
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+
+</IfModule>
+
+<ifModule mod_expires.c>
+
+ ExpiresActive On
+ #кэшировать флэш и изображения на одну неделю
+ ExpiresByType image/x-icon "access plus 7 days"
+ ExpiresByType image/jpeg "access plus 7 days"
+ ExpiresByType image/png "access plus 7 days"
+ ExpiresByType image/gif "access plus 7 days"
+</ifModule>
