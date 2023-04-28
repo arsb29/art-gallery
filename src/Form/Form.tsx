@@ -1,6 +1,7 @@
 import React from 'react';
-import { TextInput, Button, Group, Select } from '@mantine/core';
+import { TextInput, Button, Group, Select, InputBase  } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { IMaskInput } from 'react-imask';
 import styles from './Form.module.scss';
 
 
@@ -23,8 +24,6 @@ export default function Form() {
         },
     });
 
-    console.log(form)
-
     return (
         <div className={styles.form}>
             <form onSubmit={form.onSubmit((values) => console.log(values))}>
@@ -34,10 +33,12 @@ export default function Form() {
                     placeholder="Введите имя"
                     {...form.getInputProps('name')}
                 />
-                <TextInput
+                <InputBase
                     withAsterisk
                     label="Телефон"
-                    placeholder="Введите номер"
+                    placeholder="+7 (___) ___-__-__"
+                    component={IMaskInput}
+                    mask="+7 (000) 000-00-00"
                     mt="xl"
                     {...form.getInputProps('phone')}
                 />

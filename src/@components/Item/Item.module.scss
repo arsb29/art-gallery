@@ -34,6 +34,9 @@
   @include for-size(mobile) {
     margin-top: 10px;
   }
+  & a {
+    color: black;
+  }
 }
 
 .button {
