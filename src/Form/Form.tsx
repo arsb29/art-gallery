@@ -40,6 +40,7 @@ export default function Form() {
                     component={IMaskInput}
                     mask="+7 (000) 000-00-00"
                     mt="xl"
+                    type="number"
                     {...form.getInputProps('phone')}
                 />
                 <TextInput
