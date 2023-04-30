@@ -23,7 +23,7 @@ export default function Form() {
             phone: '',
             select: '',
         },
-
+        validateInputOnBlur: true,
         validate: {
             email: (value) => (
                 /^\S+@\S+$/.test(value) ? null : 'Некорректный email'
