@@ -1,11 +1,21 @@
-import React from 'react';
-import { TextInput, Button, Group, Select, InputBase  } from '@mantine/core';
+import React, {useEffect, useState} from 'react';
+import {
+    TextInput,
+    Button,
+    Group,
+    Select,
+    InputBase,
+    Autocomplete
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IMaskInput } from 'react-imask';
 import styles from './Form.module.scss';
 
 
+const EMAIL_SERVICES = ['mail.ru', 'yandex.ru', 'google.com'];
+
 export default function Form() {
+    const [emailHints, setEmailHints] = useState([]);
     const form = useForm({
         initialValues: {
             email: '',
@@ -19,10 +29,24 @@ export default function Form() {
                 /^\S+@\S+$/.test(value) ? null : 'Некорректный email'
             ),
             name: (value) => (value ? null : 'Введите имя'),
-            phone: (value) => (value ? null : 'Введите телефон'),
+            phone: (value) => (/\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}/.test(value)
+                ? null
+                : 'Некорректный телефон'
+            ),
             select: (value) => (value ? null : 'Введите что Вас интересует'),
         },
     });
+    const {email: emailValue} = form.values;
+    useEffect(() => {
+        console.log(emailValue)
+        const pos = emailValue.indexOf('@');
+        if (pos > 0) {
+            const base = emailValue.slice(0, pos);
+            setEmailHints(EMAIL_SERVICES.map(service => `${base}@${service}`));
+        } else {
+            setEmailHints([]);
+        }
+    }, [emailValue]);
 
     return (
         <div className={styles.form}>
@@ -42,11 +66,12 @@ export default function Form() {
                     mt="xl"
                     {...form.getInputProps('phone')}
                 />
-                <TextInput
+                <Autocomplete
                     withAsterisk
                     label="E-mail"
                     placeholder="Введите почту"
                     mt="xl"
+                    data={emailHints}
                     {...form.getInputProps('email')}
                 />
                 <Select
@@ -65,7 +90,6 @@ export default function Form() {
                     <Button
                         variant="outline"
                         type="submit"
-                        disabled
                     >
                         Отправить
                     </Button>
