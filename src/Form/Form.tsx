@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
     TextInput,
     Button,
@@ -38,7 +38,6 @@ export default function Form() {
     });
     const {email: emailValue} = form.values;
     useEffect(() => {
-        console.log(emailValue)
         const pos = emailValue.indexOf('@');
         if (pos > 0) {
             const base = emailValue.slice(0, pos);
@@ -47,10 +46,17 @@ export default function Form() {
             setEmailHints([]);
         }
     }, [emailValue]);
+    const handleSubmit = useCallback((e) => {
+        e.preventDefault();
+        return fetch('./php/mail.php', {
+            method: 'POST',
+            body: JSON.stringify(form.values)
+        })
+    }, [form.values]);
 
     return (
         <div className={styles.form}>
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form onSubmit={handleSubmit}>
                 <TextInput
                     withAsterisk
                     label="Имя"
