@@ -48,9 +48,13 @@ export default function Form() {
     }, [emailValue]);
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
+        const formData = new FormData();
+        for (const formDataKey in form.values) {
+            formData.set(formDataKey, form.values[formDataKey]);
+        }
         return fetch('./php/mail.php', {
             method: 'POST',
-            body: JSON.stringify(form.values)
+            body: formData
         })
     }, [form.values]);
 
