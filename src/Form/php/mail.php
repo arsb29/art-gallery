@@ -6,7 +6,8 @@ $arr = array(
     'Имя:' => $_POST['name'],
     'Телефон:' => $_POST['phone'],
     'E-mail:' => $_POST['email'],
-    'Выбор:' => $_POST['select']
+    'Выбор:' => $_POST['select'],
+    'Текст:' => $_POST['text']
 );
 
 $txt = '';

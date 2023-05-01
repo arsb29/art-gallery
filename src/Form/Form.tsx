@@ -5,7 +5,8 @@ import {
     Group,
     Select,
     InputBase,
-    Autocomplete
+    Autocomplete,
+    Textarea
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IMaskInput } from 'react-imask';
@@ -22,6 +23,7 @@ export default function Form() {
             name: '',
             phone: '',
             select: '',
+            text: ''
         },
         validateInputOnBlur: true,
         validate: {
@@ -46,21 +48,31 @@ export default function Form() {
             setEmailHints([]);
         }
     }, [emailValue]);
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
+    const handleSubmit = useCallback((values) => {
         const formData = new FormData();
-        for (const formDataKey in form.values) {
+        for (const formDataKey in values) {
             formData.set(formDataKey, form.values[formDataKey]);
         }
         return fetch('./php/mail.php', {
             method: 'POST',
             body: formData
         })
+            .then(res => res.json())
+            .then(res => {
+                if (res.result === 'success') {
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            })
+            .catch(() => {
+                alert('Не удалось отправить данные. Попробуйте позже');
+            })
     }, [form.values]);
 
     return (
         <div className={styles.form}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                     withAsterisk
                     label="Имя"
@@ -75,6 +87,7 @@ export default function Form() {
                     mask="+7 (000) 000-00-00"
                     mt="xl"
                     {...form.getInputProps('phone')}
+                    type="tel"
                 />
                 <Autocomplete
                     withAsterisk
@@ -85,7 +98,8 @@ export default function Form() {
                     {...form.getInputProps('email')}
                 />
                 <Select
-                    label="Что Вас интересует?"
+                    withAsterisk
+                    label="Что Вас заинтересовало?"
                     dropdownPosition="bottom"
                     mt="xl"
                     data={[
@@ -95,6 +109,13 @@ export default function Form() {
                         { value: 'other', label: 'Другое' },
                     ]}
                     {...form.getInputProps('select')}
+                />
+                <Textarea
+                    label="Опишите подробнее"
+                    autosize
+                    minRows={4}
+                    mt="xl"
+                    {...form.getInputProps('text')}
                 />
                 <Group position="right" mt="xl">
                     <Button
