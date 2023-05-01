@@ -14,6 +14,7 @@ import styles from './Form.module.scss';
 
 
 const EMAIL_SERVICES = ['mail.ru', 'yandex.ru', 'google.com'];
+const SELECT_VALUES = ['Картина', 'Выставка', 'Мастерская', 'Другое'];
 
 export default function Form() {
     const [emailHints, setEmailHints] = useState([]);
@@ -102,12 +103,7 @@ export default function Form() {
                     label="Что Вас заинтересовало?"
                     dropdownPosition="bottom"
                     mt="xl"
-                    data={[
-                        { value: 'picture', label: 'Картина' },
-                        { value: 'event', label: 'Выставка' },
-                        { value: 'studio', label: 'Мастерская' },
-                        { value: 'other', label: 'Другое' },
-                    ]}
+                    data={SELECT_VALUES}
                     {...form.getInputProps('select')}
                 />
                 <Textarea
